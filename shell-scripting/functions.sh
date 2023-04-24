@@ -11,9 +11,9 @@ install #calling install function
 configuration(){
     echo "this is config block"
 }
-configuration
 
 function deployment {
+    configuration
     echo "deployment block"
 }
 
