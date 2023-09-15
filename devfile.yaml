@@ -1,0 +1,34 @@
+schemaVersion: 2.1.0
+metadata:
+  name: cpp
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      memoryLimit: 1G
+      mountSources: true
+      volumeMounts: 
+        - name: data
+          path: /tmp
+      mountSources: true
+  - name: data
+    volume:
+      size: 1G
+commands:
+  - id: build
+    exec:
+      label: "Build application"
+      component: tools
+      workingDir: "${PROJECT_SOURCE}"
+      commandLine: g++ -g hello.cpp -o hello.out && echo "Build complete"
+      group:
+        kind: build
+        isDefault: true
+  - id: run
+    exec:
+      label: "Run application"
+      component: tools
+      workingDir: "${PROJECT_SOURCE}"
+      commandLine: "./hello.out"
+      group:
+        kind: run
