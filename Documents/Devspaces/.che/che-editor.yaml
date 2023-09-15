@@ -1,0 +1,24 @@
+id: che-incubator/che-idea/latest
+components:
+  endpoints:
+    - name: code-redirect-1
+      targetPort: 13131
+      exposure: public
+      protocol: https
+      attributes:
+        discoverable: false
+        urlRewriteSupported: true
+    - name: code-redirect-2
+      targetPort: 13132
+      exposure: public
+      protocol: https
+      attributes:
+        discoverable: false
+        urlRewriteSupported: true       
+    - name: code-redirect-3
+      targetPort: 13133
+      exposure: public
+      protocol: https
+      attributes:
+        discoverable: false
+        urlRewriteSupported: true
