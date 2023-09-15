@@ -1,24 +1,41 @@
 id: che-incubator/che-idea/latest
 components:
-  endpoints:
-    - name: code-redirect-1
-      targetPort: 13131
-      exposure: public
-      protocol: https
-      attributes:
-        discoverable: false
-        urlRewriteSupported: true
-    - name: code-redirect-2
-      targetPort: 13132
-      exposure: public
-      protocol: https
-      attributes:
-        discoverable: false
-        urlRewriteSupported: true       
-    - name: code-redirect-3
-      targetPort: 13133
-      exposure: public
-      protocol: https
-      attributes:
-        discoverable: false
-        urlRewriteSupported: true
+  - name: intellij
+    container:
+      image: 'quay.io/che-incubator/che-idea:next'
+      volumeMounts:
+        - name: projector-user
+          path: /home/projector-user
+      mountSources: true
+      memoryLimit: 2048M
+      memoryRequest: 32Mi
+      cpuLimit: 1500m
+      cpuRequest: 100m
+      endpoints:
+        - name: code-redirect-1
+          targetPort: 13131
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: true
+        - name: code-redirect-2
+          targetPort: 13132
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: true       
+        - name: code-redirect-3
+          targetPort: 13133
+          exposure: public
+          protocol: https
+          attributes:
+            discoverable: false
+            urlRewriteSupported: true
+ 
+          
+              
+
+
+    
